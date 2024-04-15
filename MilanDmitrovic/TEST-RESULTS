@@ -1,0 +1,32 @@
+# TEST-RESULTS
+
+## Uvod
+Ovaj dokument sadrži rezultate testiranja kalkulatora koji evaluiše aritmetičke izraze uključujući operacije sabiranja, oduzimanja, množenja i deljenja. Kalkulator treba da podržava kompleksnije izraze sa mešavinom operacija i prioriteta.
+
+## Metodologija
+Testiranje je sprovedeno korišćenjem metodologije crne kutije, bez pregleda unutrašnje implementacije koda, sa fokusom na funkcionalnost i tačnost aritmetičkih operacija.
+
+## Detektovani Propusti i Nedostaci
+
+### Greška 1: Početni znakovi
+- **Opis**: Ako izraz počinje sa višestrukim plus ili minus znacima (npr. "++5", "--5"), program ne obrađuje ove znakove na očekivani način.
+- **Lokacija**: `evaluateExpression` metoda u `Calculator` klasi.
+- **Uticaj**: Može dovesti do neispravne evaluacije izraza.
+- **Predlog za ispravku**: Implementirati logiku koja adekvatno rukuje višestrukim znacima na početku izraza.
+
+### Greška 2: Deljenje sa nulom
+- **Opis**: Program ne vraća grešku kada korisnik unese izraz koji uključuje deljenje sa nulom (npr. "5/0").
+- **Lokacija**: `Calculate` metoda u `Calculator` klasi.
+- **Uticaj**: Vodi do nedefinisanog ponašanja i potencijalno do padova programa.
+- **Predlog za ispravku**: Dodati proveru za deljenje sa nulom i vratiti odgovarajuću poruku o grešci.
+
+### Greška 3: Neadekvatna obrada nevažećih unosa
+- **Opis**: Kada se unesu nevalidni karakteri (npr. slova ili specijalni simboli), program ne vraća "ERROR" kako je očekivano.
+- **Lokacija**: `evaluateExpression` metoda.
+- **Uticaj**: Korisnik ne dobija informaciju o grešci, što može dovesti do konfuzije.
+- **Predlog za ispravku**: Pojačati validaciju unetih izraza i osigurati da se za sve nevažeće unos vrati odgovarajuća poruka o grešci.
+
+## Zapažanja
+- Program bi mogao biti poboljšan dodavanjem funkcionalnosti kao što su korisnički definisane funkcije, memorija za izraze i grafika interfejsa za lakše korišćenje.
+- Takođe, bilo bi korisno implementirati detaljniji sistem logovanja za bolje praćenje koraka izračunavanja i grešaka.
+
